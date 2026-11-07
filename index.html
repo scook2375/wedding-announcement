@@ -22,7 +22,7 @@ h1{font-family:"Gowun Dodum",sans-serif;font-weight:400;font-size:clamp(28px,6vw
 .ornament{margin:24px auto 0;color:#9a9d89}.ornament:before,.ornament:after{content:"";display:inline-block;width:35px;height:1px;background:#d6d8cb;vertical-align:middle;margin:0 12px}
 .hero h1{font-size:clamp(25px,6vw,32px);line-height:1.4;margin:0 0 4px}.hero .lead{font-size:13px;line-height:1.6}
 .hero-photo{display:block;width:100%;max-width:540px;height:auto;flex:none;margin:16px auto 0;aspect-ratio:3017/4526}
-.countdown-wrap{padding:44px 28px 0}.countdown{max-width:360px;margin:auto;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:22px 12px;text-align:center}
+.countdown-wrap{position:relative;margin-top:calc(-1 * var(--hero-tail,0px));padding:12px 28px 0}.countdown{max-width:360px;margin:auto;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:22px 12px;text-align:center}
 .count-number{font-family:Georgia,serif;font-size:28px;line-height:1.4;letter-spacing:.06em;margin:6px 0}.date-sub{font-size:12px;color:#747267}
 section{padding:48px 28px}.date-layout{display:grid;grid-template-columns:.8fr 1.2fr;gap:30px;align-items:center;max-width:620px;margin:auto}
 h2{font-family:"Gowun Dodum",sans-serif;font-weight:400;font-size:24px;letter-spacing:-.05em;line-height:1.6;margin:14px 0}
@@ -45,7 +45,7 @@ html{scroll-behavior:smooth;scroll-padding-top:24px}
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .85s ease,transform .85s cubic-bezier(.2,.65,.3,1);transition-delay:var(--reveal-delay,0ms)}
 .reveal.is-visible{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none!important;transition:none!important}}
-@media(max-width:560px){.hero{padding:20px 22px 24px}.date-layout{grid-template-columns:1fr;gap:20px}.date-copy{text-align:center}.date-copy .small-rule{margin:18px auto}.calendar{max-width:360px;width:100%;margin:auto}section{padding:38px 22px}.countdown-wrap{padding:36px 28px 0}.countdown{padding:20px 10px}.account{padding:36px 14px 30px}}
+@media(max-width:560px){.hero{padding:20px 22px 24px}.date-layout{grid-template-columns:1fr;gap:20px}.date-copy{text-align:center}.date-copy .small-rule{margin:18px auto}.calendar{max-width:360px;width:100%;margin:auto}section{padding:38px 22px}.countdown-wrap{padding:12px 28px 0}.countdown{padding:20px 10px}.account{padding:36px 14px 30px}}
 </style></head><body>
 <div class="scroll-progress" aria-hidden="true"></div>
 <main class="page">
@@ -92,6 +92,17 @@ function updateScrollProgress(){
 function requestScrollProgress(){if(!scrollFramePending){scrollFramePending=true;requestAnimationFrame(updateScrollProgress)}}
 window.addEventListener("scroll",requestScrollProgress,{passive:true});
 window.addEventListener("resize",requestScrollProgress);
+// Trim only the space below the photo, preserving the hero's established position.
+const hero=document.querySelector(".hero"),heroPhoto=document.querySelector(".hero-photo");
+function updateHeroGap(){
+ const tail=Math.max(0,hero.getBoundingClientRect().bottom-heroPhoto.getBoundingClientRect().bottom-24);
+ document.documentElement.style.setProperty("--hero-tail",`${tail}px`);
+ requestScrollProgress();
+}
+new ResizeObserver(updateHeroGap).observe(hero);
+heroPhoto.addEventListener("load",updateHeroGap);
+window.addEventListener("resize",updateHeroGap);
 new ResizeObserver(requestScrollProgress).observe(document.body);
+updateHeroGap();
 updateScrollProgress();
 </script></body></html>
