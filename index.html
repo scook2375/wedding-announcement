@@ -95,7 +95,8 @@ window.addEventListener("resize",requestScrollProgress);
 // Trim only the space below the photo, preserving the hero's established position.
 const hero=document.querySelector(".hero"),heroPhoto=document.querySelector(".hero-photo");
 function updateHeroGap(){
- const tail=Math.max(0,hero.getBoundingClientRect().bottom-heroPhoto.getBoundingClientRect().bottom-24);
+ const heroRect=hero.getBoundingClientRect();
+ const tail=Math.max(0,Math.min(heroRect.bottom-heroPhoto.getBoundingClientRect().bottom-40,heroRect.height-window.innerHeight));
  document.documentElement.style.setProperty("--hero-tail",`${tail}px`);
  requestScrollProgress();
 }
