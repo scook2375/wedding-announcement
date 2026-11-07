@@ -15,12 +15,12 @@
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:"Gowun Dodum","Apple SD Gothic Neo","Malgun Gothic",sans-serif;line-height:1.8}
 button{font:inherit;cursor:pointer}
 .page{max-width:760px;margin:auto;background:var(--paper);min-height:100vh;box-shadow:0 18px 55px #3f372a12;overflow:hidden}
-.hero{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;align-items:center;text-align:center;padding:60px 25px 45px;background:radial-gradient(ellipse at 8% 10%,#e9e9dd,transparent 32%),radial-gradient(ellipse at 95% 15%,#eee4d9,transparent 31%),linear-gradient(#f5f2eb,#fffdfa 88%)}
+.hero{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;align-items:center;text-align:center;padding:40px 25px 28px;background:radial-gradient(ellipse at 8% 10%,#e9e9dd,transparent 32%),radial-gradient(ellipse at 95% 15%,#eee4d9,transparent 31%),linear-gradient(#f5f2eb,#fffdfa 88%)}
 .eyebrow,.label{font-family:Georgia,serif;letter-spacing:.28em;font-size:10px;color:#777d68}
 h1{font-family:"Gowun Dodum",sans-serif;font-weight:400;font-size:clamp(28px,6vw,36px);letter-spacing:-.03em;line-height:1.5;margin:22px 0 10px}
 .lead{font-family:"Gowun Dodum",sans-serif;color:#6f6c62;font-size:14px;line-height:1.8;margin:0}
 .ornament{margin:24px auto 0;color:#9a9d89}.ornament:before,.ornament:after{content:"";display:inline-block;width:35px;height:1px;background:#d6d8cb;vertical-align:middle;margin:0 12px}
-.hero-photo{display:block;width:100%;max-width:540px;height:auto;flex:none;margin:30px auto 0;aspect-ratio:3017/4526}
+.hero-photo{display:block;width:auto;max-width:100%;height:auto;max-height:calc(100vh - 300px);max-height:calc(100svh - 300px);flex:none;margin:24px auto 0;object-fit:contain;aspect-ratio:3017/4526}
 .countdown-wrap{padding:44px 28px 0}.countdown{max-width:360px;margin:auto;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:22px 12px;text-align:center}
 .count-number{font-family:Georgia,serif;font-size:28px;line-height:1.4;letter-spacing:.06em;margin:6px 0}.date-sub{font-size:12px;color:#747267}
 section{padding:48px 28px}.date-layout{display:grid;grid-template-columns:.8fr 1.2fr;gap:30px;align-items:center;max-width:620px;margin:auto}
@@ -44,11 +44,11 @@ html{scroll-behavior:smooth;scroll-padding-top:24px}
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .85s ease,transform .85s cubic-bezier(.2,.65,.3,1);transition-delay:var(--reveal-delay,0ms)}
 .reveal.is-visible{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal,}
-@media(max-width:560px){.hero{padding:46px 22px 35px}.date-layout{grid-template-columns:1fr;gap:20px}.date-copy{text-align:center}.date-copy .small-rule{margin:18px auto}.calendar{max-width:360px;width:100%;margin:auto}section{padding:38px 22px}.countdown-wrap{padding:36px 28px 0}.countdown{padding:20px 10px}.account{padding:36px 14px 30px}}
+@media(max-width:560px){.hero{padding:28px 22px 24px}.hero-photo{max-height:calc(100vh - 260px);max-height:calc(100svh - 260px)}.date-layout{grid-template-columns:1fr;gap:20px}.date-copy{text-align:center}.date-copy .small-rule{margin:18px auto}.calendar{max-width:360px;width:100%;margin:auto}section{padding:38px 22px}.countdown-wrap{padding:36px 28px 0}.countdown{padding:20px 10px}.account{padding:36px 14px 30px}}
 </style></head><body>
 <div class="scroll-progress" aria-hidden="true"></div>
 <main class="page">
-<header class="hero"><div class="eyebrow">OUR BEGINNING</div><h1>우리, 부부가 되었어요.</h1><p class="lead">이제, 함께 걸어갑니다.</p><div class="ornament">✳</div><img class="hero-photo" src="assets/wedding.jpg" alt="함께 서 있는 신랑 정석희와 신부 황민정의 웨딩 사진" width="3017" height="4526" fetchpriority="high" decoding="async"></header>
+<header class="hero"><div class="eyebrow">OUR BEGINNING</div><h1>둘이, 함께.</h1><p class="lead">평생을 함께하기로 했습니다.</p><div class="ornament">✳</div><img class="hero-photo" src="assets/wedding.jpg" alt="함께 서 있는 신랑 정석희와 신부 황민정의 웨딩 사진" width="3017" height="4526" fetchpriority="high" decoding="async"></header>
 <div class="countdown-wrap"><div class="countdown"><div class="label">OUR DAY</div><div class="count-number" id="countNumber">2026. 12. 13</div><div class="date-sub" id="dateSub">2026년 12월 13일 · 일요일</div></div></div>
 <section><div class="date-layout"><div class="date-copy"><div class="label">WEDDING DATE</div><h2 id="dateHeadline">우리, 2026년 12월 13일</h2><div class="small-rule"></div><p>지금까지와는 다른,<br>더 좋은 날들을 함께 만들어갈게요.</p></div><div class="calendar"><div class="calendar-head"><button class="month-btn" id="prevMonth" aria-label="이전 달">‹</button><div class="calendar-title" id="calendarTitle"></div><button class="month-btn" id="nextMonth" aria-label="다음 달">›</button></div><div class="weekdays"><span>SUN</span><span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span></div><div class="days" id="calendarDays"></div></div></div></section>
 <section class="message"><div class="label">WITH LOVE AND GRATITUDE</div><h2>감사한 마음을 전합니다.</h2><p>저희의 결혼은 가족들과 함께하는<br>작은 가족식으로 진행합니다.<br><br>늘 곁에서 보내주신 사랑에 감사드리며,<br>서로 아끼고 사랑하며 살아가겠습니다.<br>따뜻한 마음으로 축복해 주세요.</p><div class="names"><div class="family-line"><strong class="couple-name">신랑 정석희</strong></div><div class="family-line"><strong class="couple-name">신부 황민정</strong></div></div></section>
