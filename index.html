@@ -14,14 +14,14 @@
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:"Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;line-height:1.8}
 button{font:inherit;cursor:pointer}
 .page{max-width:760px;margin:auto;background:var(--paper);min-height:100vh;box-shadow:0 18px 55px #3f372a12;overflow:hidden}
-.hero{text-align:center;padding:60px 25px 45px;background:radial-gradient(ellipse at 8% 10%,#e9e9dd,transparent 32%),radial-gradient(ellipse at 95% 15%,#eee4d9,transparent 31%),linear-gradient(#f5f2eb,#fffdfa 88%)}
+.hero{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;align-items:center;text-align:center;padding:60px 25px 45px;background:radial-gradient(ellipse at 8% 10%,#e9e9dd,transparent 32%),radial-gradient(ellipse at 95% 15%,#eee4d9,transparent 31%),linear-gradient(#f5f2eb,#fffdfa 88%)}
 .eyebrow,.label{font-family:Georgia,serif;letter-spacing:.28em;font-size:10px;color:#777d68}
 h1{font-family:"Noto Serif KR","Batang",serif;font-weight:400;font-size:clamp(28px,6vw,39px);letter-spacing:-.07em;line-height:1.5;margin:25px 0 12px}
 .lead{font-family:"Noto Serif KR","Batang",serif;color:#6f6c62;font-size:15px;line-height:2.05;margin:0}
 .ornament{margin:24px auto 0;color:#9a9d89}.ornament:before,.ornament:after{content:"";display:inline-block;width:35px;height:1px;background:#d6d8cb;vertical-align:middle;margin:0 12px}
-.photo-placeholder{max-width:430px;margin:30px auto 0;aspect-ratio:4/3;display:grid;place-items:center;padding:24px;background:linear-gradient(135deg,#e7e2d7,#f3f0e9 50%,#dedbce);color:#858173;font-size:13px}
-.countdown-wrap{padding:0 22px}.countdown{max-width:580px;margin:auto;background:#f5f1e9;border:1px solid #eee8dc;border-radius:5px;padding:28px 20px;text-align:center}
-.count-number{font-family:Georgia,serif;font-size:clamp(42px,10vw,60px);line-height:1.35;margin:8px 0}.date-sub{font-size:13px;color:#747267}
+.photo-placeholder{width:100%;max-width:540px;min-height:360px;flex:1;margin:30px auto 0;aspect-ratio:3/4;display:grid;place-items:center;padding:24px;background:linear-gradient(135deg,#e7e2d7,#f3f0e9 50%,#dedbce);color:#858173;font-size:13px}
+.countdown-wrap{padding:44px 28px 0}.countdown{max-width:360px;margin:auto;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:22px 12px;text-align:center}
+.count-number{font-family:Georgia,serif;font-size:28px;line-height:1.4;letter-spacing:.06em;margin:6px 0}.date-sub{font-size:12px;color:#747267}
 section{padding:48px 28px}.date-layout{display:grid;grid-template-columns:.8fr 1.2fr;gap:30px;align-items:center;max-width:620px;margin:auto}
 h2{font-family:"Noto Serif KR","Batang",serif;font-weight:400;font-size:24px;letter-spacing:-.05em;line-height:1.6;margin:14px 0}
 .date-copy p,.info-card p{font-size:13px;color:#747267;line-height:2}.small-rule{width:34px;height:1px;background:#b8bba8;margin:22px 0}
@@ -47,12 +47,12 @@ html{scroll-behavior:smooth;scroll-padding-top:24px}
 .info-card{transition:opacity .85s ease,transform .85s cubic-bezier(.2,.65,.3,1),box-shadow .3s ease;transition-delay:var(--reveal-delay,0ms)}
 .info-card.is-visible:hover{transform:translateY(-4px);box-shadow:0 10px 25px #3f372a0c}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal,.info-card{opacity:1;transform:none!important;transition:none!important}}
-@media(max-width:560px){.hero{padding:46px 22px 35px}.date-layout{grid-template-columns:1fr;gap:20px}.date-copy{text-align:center}.date-copy .small-rule{margin:18px auto}.calendar{max-width:360px;width:100%;margin:auto}section{padding:38px 22px}.cards{grid-template-columns:1fr}.info-card{padding:19px}.countdown-wrap{padding:0 14px}.countdown{padding:24px 15px}.account{padding:0 14px 30px}}
+@media(max-width:560px){.hero{padding:46px 22px 35px}.date-layout{grid-template-columns:1fr;gap:20px}.date-copy{text-align:center}.date-copy .small-rule{margin:18px auto}.calendar{max-width:360px;width:100%;margin:auto}section{padding:38px 22px}.cards{grid-template-columns:1fr}.info-card{padding:19px}.photo-placeholder{min-height:380px}.countdown-wrap{padding:36px 28px 0}.countdown{padding:20px 10px}.account{padding:0 14px 30px}}
 </style></head><body>
 <div class="scroll-progress" aria-hidden="true"></div>
 <main class="page">
 <header class="hero"><div class="eyebrow">OUR WEDDING ANNOUNCEMENT</div><h1>저희, 부부가 되었습니다.</h1><p class="lead">서로의 가장 가까운 편이 되어<br>함께 살아가기로 약속했습니다.</p><div class="ornament">✳</div><div class="photo-placeholder">웨딩 사진을 준비하면<br>이곳에 추가할 예정입니다</div></header>
-<div class="countdown-wrap"><div class="countdown"><div class="label">D - DAY</div><div class="count-number" id="countNumber">2026. 12. 13</div><div class="date-sub" id="dateSub">2026년 12월 13일 · 일요일</div></div></div>
+<div class="countdown-wrap"><div class="countdown"><div class="label">OUR DAY</div><div class="count-number" id="countNumber">2026. 12. 13</div><div class="date-sub" id="dateSub">2026년 12월 13일 · 일요일</div></div></div>
 <section><div class="date-layout"><div class="date-copy"><div class="label">WEDDING DATE</div><h2 id="dateHeadline">우리, 2026년 12월 13일</h2><div class="small-rule"></div><p>지금까지와는 다른,<br>더 좋은 날들을 함께 만들어갈게요.</p></div><div class="calendar"><div class="calendar-head"><button class="month-btn" id="prevMonth" aria-label="이전 달">‹</button><div class="calendar-title" id="calendarTitle"></div><button class="month-btn" id="nextMonth" aria-label="다음 달">›</button></div><div class="weekdays"><span>SUN</span><span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span></div><div class="days" id="calendarDays"></div></div></div></section>
 <section class="message"><div class="label">WITH LOVE AND GRATITUDE</div><h2>감사한 마음을 전합니다.</h2><p>기쁜 소식을 직접 전하지 못한 분들께<br>이렇게나마 저희의 소식을 전합니다.<br><br>저희 두 사람의 새로운 시작을<br>따뜻한 마음으로 축복해 주시면 감사하겠습니다.<br>보내주신 마음을 소중히 간직하며<br>서로 아끼고 사랑하며 잘 살아가겠습니다.</p><div class="names">신랑 ○○○ &nbsp; · &nbsp; 신부 ○○○</div></section>
 <section><div class="cards"><article class="info-card"><div class="card-icon">♡</div><h3>부모님께</h3><p>저희의 결혼 소식과 함께<br>감사한 마음을 전하고자 합니다.</p><a class="card-link" href="#accountSection">알림장 보기　→</a></article><article class="info-card"><div class="card-icon">✧</div><h3>지인분들께</h3><p>저희의 결혼 소식을 함께 축하해 주시면<br>더 큰 기쁨이 될 것 같습니다.</p><a class="card-link" href="#thanks">알림장 보기　→</a></article></div></section>
